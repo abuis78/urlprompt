@@ -177,6 +177,8 @@ def build_json_from_the_response(action=None, success=None, container=None, resu
     response = check_the_status_of_the_prompt_result_item_0[0]
     
     response_data = response[0]["data"][0]["response"]
+    
+    phantom.debug(response_data)
 
     ################################################################################
     ## Custom Code End
