@@ -74,9 +74,22 @@
                     "sourcePort": "9_out",
                     "targetNode": "11",
                     "targetPort": "11_in"
+                },
+                {
+                    "id": "port_6_to_port_1",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                },
+                {
+                    "id": "port_11_to_port_1",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "f26de6349e6c15b9b7fadc0275684d3c0b50b781",
             "nodes": {
                 "0": {
                     "data": {
@@ -91,8 +104,8 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 419.9999999999999
+                    "x": 190,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -107,8 +120,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 980,
-                    "y": 1440
+                    "x": 190,
+                    "y": 1016
                 },
                 "11": {
                     "data": {
@@ -260,8 +273,8 @@
                     "id": "11",
                     "type": "utility",
                     "warnings": {},
-                    "x": 980,
-                    "y": 1284.5
+                    "x": 340,
+                    "y": 860
                 },
                 "2": {
                     "data": {
@@ -294,8 +307,8 @@
                     "id": "2",
                     "type": "filter",
                     "warnings": {},
-                    "x": 1040,
-                    "y": 580
+                    "x": 230,
+                    "y": 148
                 },
                 "3": {
                     "data": {
@@ -330,8 +343,8 @@
                     "id": "3",
                     "type": "action",
                     "warnings": {},
-                    "x": 1155,
-                    "y": 740
+                    "x": 170,
+                    "y": 328
                 },
                 "4": {
                     "data": {
@@ -396,8 +409,8 @@
                     "id": "4",
                     "type": "decision",
                     "warnings": {},
-                    "x": 1040,
-                    "y": 920
+                    "x": 250,
+                    "y": 492
                 },
                 "5": {
                     "data": {
@@ -430,8 +443,8 @@
                     "id": "5",
                     "type": "filter",
                     "warnings": {},
-                    "x": 760,
-                    "y": 1080
+                    "x": 60,
+                    "y": 672
                 },
                 "6": {
                     "data": {
@@ -468,8 +481,8 @@
                     "id": "6",
                     "type": "action",
                     "warnings": {},
-                    "x": 700,
-                    "y": 1244.5
+                    "x": 0,
+                    "y": 852
                 },
                 "9": {
                     "data": {
@@ -494,8 +507,8 @@
                     "type": "code",
                     "userCode": "\n    # Write your custom code here...\n    \n    \n    response = check_the_status_of_the_prompt_result_item_0[0]\n    response_data = response[0][\"response\"]\n    stringified_data = {key: str(value) for key, value in response_data.items()}\n    \n    \n    \n    a_json = { \"cef\": stringified_data }\n    \n    \n    phantom.debug(a_json)\n\n",
                     "warnings": {},
-                    "x": 960,
-                    "y": 1120
+                    "x": 340,
+                    "y": 680
                 }
             },
             "notes": ""
