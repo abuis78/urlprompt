@@ -1,0 +1,179 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "",
+            "edges": [
+                {
+                    "id": "port_0_to_port_2",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_3",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_1",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                }
+            ],
+            "hash": "ae16a9e8aca13b6682d8c9c60ee110c5f2d3dee3",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 419.9999999999999
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 1000
+                },
+                "2": {
+                    "data": {
+                        "action": "create json prompt",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "URL Prompt",
+                        "connectorConfigs": [
+                            "urlprompt"
+                        ],
+                        "connectorId": "709b9d9a-fa75-4ab1-95c1-474f65ba6c43",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "create_json_prompt_1",
+                        "id": "2",
+                        "parameters": {
+                            "schema": "playbook_input:json_schema"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "default": "",
+                                "field": "schema"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 584.5
+                },
+                "3": {
+                    "data": {
+                        "action": "schedule playbook",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Runner",
+                        "connectorConfigs": [
+                            "runner-1"
+                        ],
+                        "connectorId": "3f141df7-4bf2-40de-8f68-6133a2cabf11",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "schedule_playbook_1",
+                        "id": "3",
+                        "parameters": {
+                            "delay_duration": "5",
+                            "duration_unit": "Minutes",
+                            "playbook": "Format: <repository>/<playbook>",
+                            "playbook_scope": "all"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "default": "Format: <repository>/<playbook>",
+                                "field": "playbook"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "delay_purpose"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "Minutes",
+                                "field": "duration_unit"
+                            },
+                            {
+                                "data_type": "numeric",
+                                "default": "5",
+                                "field": "delay_duration"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "all",
+                                "field": "playbook_scope"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 764.5
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": [
+            {
+                "contains": [],
+                "description": "",
+                "name": "json_schema"
+            }
+        ],
+        "output_spec": null,
+        "playbook_type": "data",
+        "python_version": "3",
+        "schema": "5.0.10",
+        "version": "6.1.0.131"
+    },
+    "create_time": "2023-08-15T07:58:19.772598+00:00",
+    "draft_mode": false,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
