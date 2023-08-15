@@ -69,7 +69,7 @@
                     "targetPort": "9_in"
                 }
             ],
-            "hash": "7a6d271e416474f9bcfda89c44ae44a1cf3e8e40",
+            "hash": "8965cd138b015245ddf34a9ebe46d3c552486053",
             "nodes": {
                 "0": {
                     "data": {
@@ -332,10 +332,10 @@
                     "errors": {},
                     "id": "9",
                     "type": "code",
-                    "userCode": "\n    # Write your custom code here...\n    \n    phantom.debug(check_the_status_of_the_prompt_result_item_0[0])\n\n",
+                    "userCode": "\n    # Write your custom code here...\n    \n    phantom.debug(check_the_status_of_the_prompt_result_item_0[0][0])\n\n",
                     "warnings": {},
                     "x": 960,
-                    "y": 1124.5
+                    "y": 1120
                 }
             },
             "notes": ""
@@ -347,7 +347,7 @@
         "schema": "5.0.10",
         "version": "6.1.0.131"
     },
-    "create_time": "2023-08-15T09:06:35.560575+00:00",
+    "create_time": "2023-08-15T09:06:55.798437+00:00",
     "draft_mode": false,
     "labels": [
         "*"
