@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'json_prompt' block
-    json_prompt(container=container)
+    # call 'json_prompt_combined_prompt' block
+    json_prompt_combined_prompt(container=container)
 
     return
 
@@ -54,8 +54,8 @@ def playbook_i001_url_prompt_json_create_1_callback(action=None, success=None, c
 
 
 @phantom.playbook_block()
-def json_prompt(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("json_prompt() called")
+def json_prompt_combined_prompt(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("json_prompt_combined_prompt() called")
 
     template = """{\n    \"schema\": {\n        \"title\": \"Tell me something about yourself!\",\n        \"type\": \"object\",\n        \"required\": [\"height\", \"eyecolor\", \"birthyear\"],\n        \"properties\": {\n            \"height\": {\"type\": \"integer\", \"title\": \"Height in cm\"},\n            \"birthyear\": {\"type\": \"integer\", \"title\": \"Birthyear (YYYY)\"},\n            \"eyecolor\": {\n            \"type\": \"number\",\n            \"enum\": [1, 2, 3, 4, 5],\n            \"enumNames\": [\"blue\", \"grey\", \"green\", \"brown\", \"other\"]\n            }\n        }\n    }\n}"""
 
@@ -72,7 +72,7 @@ def json_prompt(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="json_prompt")
+    phantom.format(container=container, template=template, parameters=parameters, name="json_prompt_combined_prompt")
 
     playbook_i001_url_prompt_json_create_1(container=container)
 

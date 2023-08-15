@@ -28,7 +28,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "dc698107ef63298677a7c2bc724a71ada7238c0c",
+            "hash": "fac0fa125662730526e72cf0fae2021598487ad7",
             "nodes": {
                 "0": {
                     "data": {
@@ -93,12 +93,12 @@
                 "4": {
                     "data": {
                         "advanced": {
-                            "customName": "JSON prompt",
+                            "customName": "JSON prompt Combined Prompt",
                             "customNameId": 0,
                             "join": []
                         },
                         "functionId": 1,
-                        "functionName": "json_prompt",
+                        "functionName": "json_prompt_combined_prompt",
                         "id": "4",
                         "parameters": [],
                         "template": "{\n    \"schema\": {\n        \"title\": \"Tell me something about yourself!\",\n        \"type\": \"object\",\n        \"required\": [\"height\", \"eyecolor\", \"birthyear\"],\n        \"properties\": {\n            \"height\": {\"type\": \"integer\", \"title\": \"Height in cm\"},\n            \"birthyear\": {\"type\": \"integer\", \"title\": \"Birthyear (YYYY)\"},\n            \"eyecolor\": {\n            \"type\": \"number\",\n            \"enum\": [1, 2, 3, 4, 5],\n            \"enumNames\": [\"blue\", \"grey\", \"green\", \"brown\", \"other\"]\n            }\n        }\n    }\n}",
@@ -121,7 +121,7 @@
         "schema": "5.0.10",
         "version": "6.1.0.131"
     },
-    "create_time": "2023-08-15T09:40:50.840583+00:00",
+    "create_time": "2023-08-15T09:41:06.244009+00:00",
     "draft_mode": false,
     "labels": [
         "*"
