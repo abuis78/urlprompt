@@ -180,10 +180,10 @@ def build_json_from_the_response(action=None, success=None, container=None, resu
     
     
     
-    a_json = { "cef": stringified_data }
+    build_json_from_the_response__response_json = { "cef": stringified_data }
     
     
-    phantom.debug(a_json)
+    phantom.debug(build_json_from_the_response__response_json)
 
     ################################################################################
     ## Custom Code End
