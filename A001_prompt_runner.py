@@ -176,13 +176,14 @@ def build_json_from_the_response(action=None, success=None, container=None, resu
     
     response = check_the_status_of_the_prompt_result_item_0[0]
     response_data = response[0]["response"]
+    stringified_data = {key: str(value) for key, value in response_data.items()}
     
     
     
-    response_data = { "cef": response_data }
+    a_json = { "cef": stringified_data }
     
     
-    phantom.debug(response_data)
+    phantom.debug(a_json)
 
     ################################################################################
     ## Custom Code End
