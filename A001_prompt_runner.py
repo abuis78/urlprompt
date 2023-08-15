@@ -173,10 +173,14 @@ def build_json_from_the_response(action=None, success=None, container=None, resu
 
     # Write your custom code here...
     
-    phantom.debug(check_the_status_of_the_prompt_result_item_0[0][0])
-    response = check_the_status_of_the_prompt_result_item_0[0]
     
+    response = check_the_status_of_the_prompt_result_item_0[0]
     response_data = response[0]["response"]
+    
+    
+    
+    response_data = { "cef": response_data }
+    
     
     phantom.debug(response_data)
 
