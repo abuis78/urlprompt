@@ -56,7 +56,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "2d05332200b780eaa78f89401e2ffb6f60bd5f70",
+            "hash": "f050284236731e2b1b91d23a04d1084ce517320b",
             "nodes": {
                 "0": {
                     "data": {
@@ -379,7 +379,7 @@
                         "parameters": [
                             "create_a_json_prompt:action_result.data.*.web_url"
                         ],
-                        "template": "Guess what? We've got a special question just for YOU! Dive into this mystery by clicking on the magic link below:\n\n\ud83c\udf1f {0} \ud83c\udf1f\n\nYour adventure awaits. Can't wait to see your answer!\n\nWarm regards and much anticipation,\n\n\n",
+                        "template": "Guess what? We've got a special question just for YOU! Dive into this mystery by clicking on the magic link below:\n\n>> {0} <<\n\nYour adventure awaits. Can't wait to see your answer!\n\nWarm regards and much anticipation,\n\n\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -448,7 +448,7 @@
         "schema": "5.0.10",
         "version": "6.1.0.131"
     },
-    "create_time": "2023-08-15T09:34:46.893016+00:00",
+    "create_time": "2023-08-15T09:44:24.977659+00:00",
     "draft_mode": false,
     "labels": [
         "*"

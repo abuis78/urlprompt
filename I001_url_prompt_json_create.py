@@ -150,7 +150,7 @@ def json_for_artifact_create(action=None, success=None, container=None, results=
 def format_email_boday(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_email_boday() called")
 
-    template = """Guess what? We've got a special question just for YOU! Dive into this mystery by clicking on the magic link below:\n\n🌟 {0} 🌟\n\nYour adventure awaits. Can't wait to see your answer!\n\nWarm regards and much anticipation,\n\n\n"""
+    template = """Guess what? We've got a special question just for YOU! Dive into this mystery by clicking on the magic link below:\n\n>> {0} <<\n\nYour adventure awaits. Can't wait to see your answer!\n\nWarm regards and much anticipation,\n\n\n"""
 
     # parameter list for template variable replacement
     parameters = [
