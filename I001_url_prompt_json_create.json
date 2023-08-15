@@ -56,7 +56,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "f050284236731e2b1b91d23a04d1084ce517320b",
+            "hash": "d33b8b85c0a8efb4ee746a8db634c2b678ab98a3",
             "nodes": {
                 "0": {
                     "data": {
@@ -146,7 +146,7 @@
                         "functionName": "schedule_runner_to_check_if_user_replays",
                         "id": "3",
                         "parameters": {
-                            "delay_duration": "5",
+                            "delay_duration": "2",
                             "delay_purpose": "prompt: check if the user has already replied",
                             "duration_unit": "Minutes",
                             "playbook": "urlprompt/A001_prompt_runner",
@@ -448,7 +448,7 @@
         "schema": "5.0.10",
         "version": "6.1.0.131"
     },
-    "create_time": "2023-08-15T09:44:24.977659+00:00",
+    "create_time": "2023-08-15T09:48:55.373164+00:00",
     "draft_mode": false,
     "labels": [
         "*"

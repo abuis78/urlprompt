@@ -60,7 +60,7 @@ def schedule_runner_to_check_if_user_replays(action=None, success=None, containe
     parameters.append({
         "playbook": "urlprompt/A001_prompt_runner",
         "duration_unit": "Minutes",
-        "delay_duration": 5,
+        "delay_duration": 2,
         "playbook_scope": "all",
         "delay_purpose": "prompt: check if the user has already replied",
     })
