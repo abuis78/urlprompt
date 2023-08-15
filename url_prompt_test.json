@@ -26,9 +26,16 @@
                     "sourcePort": "4_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "fac0fa125662730526e72cf0fae2021598487ad7",
+            "hash": "820d3353f998465eded98cfabf8953a6f244a9bd",
             "nodes": {
                 "0": {
                     "data": {
@@ -43,8 +50,8 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 419.9999999999999
+                    "x": 1060,
+                    "y": 340
                 },
                 "1": {
                     "data": {
@@ -110,6 +117,61 @@
                     "warnings": {},
                     "x": 980,
                     "y": 564.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "customName": "JSON prompt Boolean Prompt",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "json_prompt_boolean_prompt",
+                        "id": "5",
+                        "parameters": [],
+                        "template": "{\n    \"schema\": {\n        \"title\": \"Convert Investigation 1223 into case\",\n        \"description\": \"<supplemental information>\",\n        \"type\": \"object\",\n        \"required\": [\"approve\"],\n        \"properties\": {\n            \"approve\": {\"type\": \"boolean\", \"title\": \"Convert to case?\"}\n        }\n    }\n}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 1264,
+                    "y": 577
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "playbook_I001_url_prompt_json_create_2",
+                        "id": "6",
+                        "inputs": {
+                            "json_schema": {
+                                "datapaths": [
+                                    "json_prompt_boolean_prompt:formatted_data"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "I001_url_prompt_json_create",
+                        "playbookRepo": 12,
+                        "playbookRepoName": "urlprompt",
+                        "playbookType": "data",
+                        "synchronous": false,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 1260,
+                    "y": 744.5
                 }
             },
             "notes": ""
@@ -121,7 +183,7 @@
         "schema": "5.0.10",
         "version": "6.1.0.131"
     },
-    "create_time": "2023-08-15T09:41:06.244009+00:00",
+    "create_time": "2023-08-15T09:42:33.749734+00:00",
     "draft_mode": false,
     "labels": [
         "*"

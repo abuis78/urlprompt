@@ -80,6 +80,58 @@ def json_prompt_combined_prompt(action=None, success=None, container=None, resul
 
 
 @phantom.playbook_block()
+def json_prompt_boolean_prompt(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("json_prompt_boolean_prompt() called")
+
+    template = """{\n    \"schema\": {\n        \"title\": \"Convert Investigation 1223 into case\",\n        \"description\": \"<supplemental information>\",\n        \"type\": \"object\",\n        \"required\": [\"approve\"],\n        \"properties\": {\n            \"approve\": {\"type\": \"boolean\", \"title\": \"Convert to case?\"}\n        }\n    }\n}"""
+
+    # parameter list for template variable replacement
+    parameters = []
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="json_prompt_boolean_prompt")
+
+    playbook_i001_url_prompt_json_create_2(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def playbook_i001_url_prompt_json_create_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_i001_url_prompt_json_create_2() called")
+
+    json_prompt_boolean_prompt = phantom.get_format_data(name="json_prompt_boolean_prompt")
+
+    inputs = {
+        "json_schema": json_prompt_boolean_prompt,
+    }
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "urlprompt/I001_url_prompt_json_create", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("urlprompt/I001_url_prompt_json_create", container=container, inputs=inputs)
+
+    return
+
+
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
