@@ -100,6 +100,9 @@ def decission_check_status(action=None, success=None, container=None, results=No
         build_json_from_the_response(action=action, success=success, container=container, results=results, handle=handle)
         return
 
+    # check for 'else' condition 3
+    unknown_prompt_status(action=action, success=success, container=container, results=results, handle=handle)
+
     return
 
 
@@ -229,6 +232,25 @@ def artifact_create_2(action=None, success=None, container=None, results=None, h
     ################################################################################
 
     phantom.custom_function(custom_function="community/artifact_create", parameters=parameters, name="artifact_create_2")
+
+    return
+
+
+@phantom.playbook_block()
+def unknown_prompt_status(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("unknown_prompt_status() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="unknown prompt status")
 
     return
 
