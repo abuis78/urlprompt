@@ -35,7 +35,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "820d3353f998465eded98cfabf8953a6f244a9bd",
+            "hash": "1e00f0aaa7ad9b8056a08c2f9ae41d79fbdb295e",
             "nodes": {
                 "0": {
                     "data": {
@@ -79,7 +79,9 @@
                         "id": "3",
                         "inputs": {
                             "json_schema": {
-                                "datapaths": [],
+                                "datapaths": [
+                                    "json_prompt_combined_prompt:formatted_data"
+                                ],
                                 "deduplicate": false
                             }
                         },
@@ -135,11 +137,7 @@
                     "errors": {},
                     "id": "5",
                     "type": "format",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 1264,
                     "y": 577
                 },
@@ -183,7 +181,7 @@
         "schema": "5.0.10",
         "version": "6.1.0.131"
     },
-    "create_time": "2023-08-15T09:42:33.749734+00:00",
+    "create_time": "2023-08-15T09:43:09.781628+00:00",
     "draft_mode": false,
     "labels": [
         "*"

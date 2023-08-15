@@ -21,8 +21,10 @@ def on_start(container):
 def playbook_i001_url_prompt_json_create_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("playbook_i001_url_prompt_json_create_1() called")
 
+    json_prompt_combined_prompt = phantom.get_format_data(name="json_prompt_combined_prompt")
+
     inputs = {
-        "json_schema": [],
+        "json_schema": json_prompt_combined_prompt,
     }
 
     ################################################################################
