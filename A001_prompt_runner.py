@@ -191,34 +191,32 @@ def build_json_from_the_response(action=None, success=None, container=None, resu
 
     phantom.save_run_data(key="build_json_from_the_response:response_json", value=json.dumps(build_json_from_the_response__response_json))
 
-    artifact_update_1(container=container)
+    artifact_create_2(container=container)
 
     return
 
 
 @phantom.playbook_block()
-def artifact_update_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("artifact_update_1() called")
+def artifact_create_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("artifact_create_2() called")
 
-    filtered_artifact_0_data_filter_get_prompt_artifact = phantom.collect2(container=container, datapath=["filtered-data:filter_get_prompt_artifact:condition_1:artifact:*.id","filtered-data:filter_get_prompt_artifact:condition_1:artifact:*.id"])
+    id_value = container.get("id", None)
     build_json_from_the_response__response_json = json.loads(_ if (_ := phantom.get_run_data(key="build_json_from_the_response:response_json")) != "" else "null")  # pylint: disable=used-before-assignment
 
     parameters = []
 
-    # build parameters list for 'artifact_update_1' call
-    for filtered_artifact_0_item_filter_get_prompt_artifact in filtered_artifact_0_data_filter_get_prompt_artifact:
-        parameters.append({
-            "artifact_id": filtered_artifact_0_item_filter_get_prompt_artifact[0],
-            "name": None,
-            "label": None,
-            "severity": None,
-            "cef_field": None,
-            "cef_value": None,
-            "cef_data_type": None,
-            "tags": None,
-            "overwrite_tags": None,
-            "input_json": build_json_from_the_response__response_json,
-        })
+    parameters.append({
+        "container": id_value,
+        "name": "Prompt answer",
+        "label": None,
+        "severity": None,
+        "cef_field": None,
+        "cef_value": None,
+        "cef_data_type": None,
+        "tags": None,
+        "run_automation": False,
+        "input_json": build_json_from_the_response__response_json,
+    })
 
     ################################################################################
     ## Custom Code Start
@@ -230,7 +228,7 @@ def artifact_update_1(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/artifact_update", parameters=parameters, name="artifact_update_1")
+    phantom.custom_function(custom_function="community/artifact_create", parameters=parameters, name="artifact_create_2")
 
     return
 

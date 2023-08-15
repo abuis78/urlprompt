@@ -69,13 +69,6 @@
                     "targetPort": "9_in"
                 },
                 {
-                    "id": "port_9_to_port_11",
-                    "sourceNode": "9",
-                    "sourcePort": "9_out",
-                    "targetNode": "11",
-                    "targetPort": "11_in"
-                },
-                {
                     "id": "port_6_to_port_1",
                     "sourceNode": "6",
                     "sourcePort": "6_out",
@@ -83,14 +76,21 @@
                     "targetPort": "1_in"
                 },
                 {
-                    "id": "port_11_to_port_1",
-                    "sourceNode": "11",
-                    "sourcePort": "11_out",
+                    "id": "port_9_to_port_12",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
+                },
+                {
+                    "id": "port_12_to_port_1",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "a649cc9a5dd93c3d7a19e6ca1b0975474a325873",
+            "hash": "3238fd5f839e17d8de51bd039835a044582755db",
             "nodes": {
                 "0": {
                     "data": {
@@ -124,40 +124,40 @@
                     "x": 190,
                     "y": 1016
                 },
-                "11": {
+                "12": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
                         "customFunction": {
                             "draftMode": false,
-                            "name": "artifact_update",
+                            "name": "artifact_create",
                             "repoName": "community"
                         },
-                        "functionId": 1,
-                        "functionName": "artifact_update_1",
-                        "id": "11",
+                        "functionId": 2,
+                        "functionName": "artifact_create_2",
+                        "id": "12",
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
-                            "artifact_update": {
-                                "description": "Update an artifact with the specified attributes. All parameters are optional, except that an artifact_id must be provided and if one of cef_field or cef_value is provided then they must both be provided. Supports all fields available in /rest/artifact. Add any unlisted inputs as dictionary keys in input_json. Unsupported keys will automatically be dropped.",
+                            "artifact_create": {
+                                "description": "Create a new artifact with the specified attributes. Supports all fields available in /rest/artifact. Add any unlisted inputs as dictionary keys in input_json. Unsupported keys will automatically be dropped.",
                                 "fields": [
                                     {
                                         "dataTypes": [
-                                            "phantom artifact id"
+                                            "phantom container id"
                                         ],
-                                        "description": "ID of the artifact to update, which is required unless artifact_id is a key within input_json",
+                                        "description": "Container which the artifact will be added to.",
                                         "inputType": "item",
-                                        "label": "artifact_id",
-                                        "name": "artifact_id",
-                                        "placeholder": "1234",
+                                        "label": "container",
+                                        "name": "container",
+                                        "placeholder": "container:id",
                                         "renderType": "datapath",
                                         "required": false
                                     },
                                     {
                                         "dataTypes": [],
-                                        "description": "Change the name of the artifact.",
+                                        "description": "The name of the new artifact, which is optional and defaults to \"artifact\".",
                                         "inputType": "item",
                                         "label": "name",
                                         "name": "name",
@@ -166,10 +166,8 @@
                                         "required": false
                                     },
                                     {
-                                        "dataTypes": [
-                                            ""
-                                        ],
-                                        "description": "Change the label of the artifact.",
+                                        "dataTypes": [],
+                                        "description": "The label of the new artifact, which is optional and defaults to \"events\"",
                                         "inputType": "item",
                                         "label": "label",
                                         "name": "label",
@@ -178,8 +176,10 @@
                                         "required": false
                                     },
                                     {
-                                        "dataTypes": [],
-                                        "description": "Change the severity of the artifact. Typically this is either \"High\", \"Medium\", or \"Low\".",
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "The severity of the new artifact, which is optional and defaults to \"Medium\". Typically this is either \"High\", \"Medium\", or \"Low\".",
                                         "inputType": "item",
                                         "label": "severity",
                                         "name": "severity",
@@ -211,7 +211,7 @@
                                     },
                                     {
                                         "dataTypes": [],
-                                        "description": "The CEF data type of the data in cef_value. For example, this could be \"ip\", \"hash\", or \"domain\". Optional, but only operational if cef_field is provided.",
+                                        "description": "The CEF data type of the data in cef_value. For example, this could be \"ip\", \"hash\", or \"domain\". Optional.",
                                         "inputType": "item",
                                         "label": "cef_data_type",
                                         "name": "cef_data_type",
@@ -221,7 +221,7 @@
                                     },
                                     {
                                         "dataTypes": [],
-                                        "description": "A comma-separated list of tags to apply to the artifact, which is optional.",
+                                        "description": "A comma-separated list of tags to apply to the created artifact, which is optional.",
                                         "inputType": "item",
                                         "label": "tags",
                                         "name": "tags",
@@ -231,11 +231,11 @@
                                     },
                                     {
                                         "dataTypes": [],
-                                        "description": "Optional input. Either True or False with default as False. If set to True, existing tags on the indicator record will be replaced by the provided input. If set to False, the new tags will be appended to the existing indicator tags.",
+                                        "description": "Either \"true\" or \"false\", depending on whether or not the new artifact should trigger the execution of any playbooks that are set to active on the label of the container the artifact will be added to. Optional and defaults to \"false\".",
                                         "inputType": "item",
-                                        "label": "overwrite_tags",
-                                        "name": "overwrite_tags",
-                                        "placeholder": "True or False",
+                                        "label": "run_automation",
+                                        "name": "run_automation",
+                                        "placeholder": "false",
                                         "renderType": "datapath",
                                         "required": false
                                     },
@@ -250,32 +250,32 @@
                                         "required": false
                                     }
                                 ],
-                                "label": "artifact_update",
-                                "name": "artifact_update"
+                                "label": "artifact_create",
+                                "name": "artifact_create"
                             }
                         },
                         "utilityType": "custom_function",
                         "values": {
-                            "artifact_update": {
-                                "artifact_id": "filtered-data:filter_get_prompt_artifact:condition_1:artifact:*.id",
+                            "artifact_create": {
                                 "cef_data_type": null,
                                 "cef_field": null,
                                 "cef_value": null,
+                                "container": "container:id",
                                 "input_json": "build_json_from_the_response:custom_function:response_json",
                                 "label": null,
-                                "name": null,
-                                "overwrite_tags": null,
+                                "name": "Prompt answer",
+                                "run_automation": "false",
                                 "severity": null,
                                 "tags": null
                             }
                         }
                     },
                     "errors": {},
-                    "id": "11",
+                    "id": "12",
                     "type": "utility",
                     "warnings": {},
                     "x": 340,
-                    "y": 860
+                    "y": 844.5
                 },
                 "2": {
                     "data": {
@@ -521,7 +521,7 @@
         "schema": "5.0.10",
         "version": "6.1.0.131"
     },
-    "create_time": "2023-08-15T09:25:12.894726+00:00",
+    "create_time": "2023-08-15T09:26:50.041008+00:00",
     "draft_mode": false,
     "labels": [
         "*"
