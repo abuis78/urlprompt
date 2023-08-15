@@ -35,14 +35,28 @@
                     "targetPort": "5_in"
                 },
                 {
-                    "id": "port_5_to_port_3",
+                    "id": "port_5_to_port_7",
                     "sourceNode": "5",
                     "sourcePort": "5_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_8",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_3",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "84dd986b45ecf8151c9bd50a0ff9bd57dd5ff8cd",
+            "hash": "2d05332200b780eaa78f89401e2ffb6f60bd5f70",
             "nodes": {
                 "0": {
                     "data": {
@@ -74,7 +88,7 @@
                     "type": "end",
                     "warnings": {},
                     "x": 1000,
-                    "y": 1000
+                    "y": 1240
                 },
                 "2": {
                     "data": {
@@ -171,7 +185,7 @@
                     "type": "action",
                     "warnings": {},
                     "x": 980,
-                    "y": 880
+                    "y": 1120
                 },
                 "5": {
                     "data": {
@@ -351,6 +365,72 @@
                     "warnings": {},
                     "x": 980,
                     "y": 660
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format email boday",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_email_boday",
+                        "id": "7",
+                        "parameters": [
+                            "create_a_json_prompt:action_result.data.*.web_url"
+                        ],
+                        "template": "Guess what? We've got a special question just for YOU! Dive into this mystery by clicking on the magic link below:\n\n\ud83c\udf1f {0} \ud83c\udf1f\n\nYour adventure awaits. Can't wait to see your answer!\n\nWarm regards and much anticipation,\n\n\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 860
+                },
+                "8": {
+                    "data": {
+                        "action": "send email",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Send email to user",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "SMTP",
+                        "connectorConfigs": [
+                            "smtp"
+                        ],
+                        "connectorId": "45bb6f37-4478-499b-b4a3-51ecfa62b78c",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "send_email_to_user",
+                        "id": "8",
+                        "parameters": {
+                            "body": "format_email_boday:formatted_data",
+                            "from": "soc@soarrookies.com",
+                            "subject": "[Urgent request] The SOC needs a feedback from you. ",
+                            "to": "abuis@splunk.com"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "to"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "body"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 980
                 }
             },
             "notes": ""
@@ -368,7 +448,7 @@
         "schema": "5.0.10",
         "version": "6.1.0.131"
     },
-    "create_time": "2023-08-15T08:08:42.673943+00:00",
+    "create_time": "2023-08-15T09:34:46.893016+00:00",
     "draft_mode": false,
     "labels": [
         "*"

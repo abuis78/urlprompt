@@ -112,7 +112,7 @@ def add_prompt_artifact(action=None, success=None, container=None, results=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/artifact_create", parameters=parameters, name="add_prompt_artifact", callback=schedule_runner_to_check_if_user_replays)
+    phantom.custom_function(custom_function="community/artifact_create", parameters=parameters, name="add_prompt_artifact", callback=format_email_boday)
 
     return
 
@@ -142,6 +142,67 @@ def json_for_artifact_create(action=None, success=None, container=None, results=
     phantom.format(container=container, template=template, parameters=parameters, name="json_for_artifact_create")
 
     add_prompt_artifact(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_email_boday(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_email_boday() called")
+
+    template = """Guess what? We've got a special question just for YOU! Dive into this mystery by clicking on the magic link below:\n\n🌟 {0} 🌟\n\nYour adventure awaits. Can't wait to see your answer!\n\nWarm regards and much anticipation,\n\n\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "create_a_json_prompt:action_result.data.*.web_url"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_email_boday")
+
+    send_email_to_user(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def send_email_to_user(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("send_email_to_user() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    format_email_boday = phantom.get_format_data(name="format_email_boday")
+
+    parameters = []
+
+    if format_email_boday is not None:
+        parameters.append({
+            "from": "soc@soarrookies.com",
+            "to": "abuis@splunk.com",
+            "subject": "[Urgent request] The SOC needs a feedback from you. ",
+            "body": format_email_boday,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("send email", parameters=parameters, name="send_email_to_user", assets=["smtp"], callback=schedule_runner_to_check_if_user_replays)
 
     return
 
