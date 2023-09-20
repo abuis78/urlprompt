@@ -140,8 +140,8 @@ def ste_runner_artifact_to_label_pending(action=None, success=None, container=No
     for filtered_artifact_0_item_filter_runner_artifact in filtered_artifact_0_data_filter_runner_artifact:
         if filtered_artifact_0_item_filter_runner_artifact[0] is not None:
             parameters.append({
-                "artifact_id": filtered_artifact_0_item_filter_runner_artifact[0],
                 "label": "pending",
+                "artifact_id": filtered_artifact_0_item_filter_runner_artifact[0],
                 "context": {'artifact_id': filtered_artifact_0_item_filter_runner_artifact[1]},
             })
 
@@ -209,16 +209,16 @@ def artifact_create_2(action=None, success=None, container=None, results=None, h
     parameters = []
 
     parameters.append({
-        "container": id_value,
         "name": "Prompt answer",
+        "tags": None,
         "label": None,
         "severity": None,
         "cef_field": None,
         "cef_value": None,
-        "cef_data_type": None,
-        "tags": None,
-        "run_automation": False,
+        "container": id_value,
         "input_json": build_json_from_the_response__response_json,
+        "cef_data_type": None,
+        "run_automation": False,
     })
 
     ################################################################################
